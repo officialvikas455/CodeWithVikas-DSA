@@ -8,7 +8,7 @@ int TilingWays(int n){
     return TilingWays(n-1) + TilingWays(n-2);
 }
 int main(){
-    int n = 10;
+    int n = 2;
     cout<<TilingWays(n)<<endl;
     return 0;
 }

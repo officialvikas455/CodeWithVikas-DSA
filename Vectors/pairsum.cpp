@@ -1,5 +1,6 @@
-class Solution {
-    public:
+#include<iostream>
+#include<vector>
+using namespace std;
         vector<int> pairSum(vector<int> arr, int target) {
             int st = 0, end = arr.size()-1;
             int currSum = 0; 

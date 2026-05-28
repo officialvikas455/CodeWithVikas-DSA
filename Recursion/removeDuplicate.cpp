@@ -16,6 +16,7 @@ else{
     map[mapidx] = true;
     removeDuplicate(str, ans + str[i], i+1, map );
 }
+return 0;
 
 }
 

@@ -15,6 +15,6 @@ int lastOccur(vector <int> arr, int target, int i){
 
 int main(){
     vector <int> arr = {1, 2, 3, 3, 3, 3, 3};
-    cout << lastOccur(arr, 5 , 0)<<endl;
+    cout << lastOccur(arr, 2 , 0)<<endl;
     return 0;
 }

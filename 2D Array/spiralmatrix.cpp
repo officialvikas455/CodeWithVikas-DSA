@@ -4,7 +4,7 @@ using namespace std;
 void spiralmat(int mat[][4],int n, int m){
     int srow = 0, scol = 0;
     int erow = n-1, ecol = m-1;
-    while(srow= erow && scol <= ecol){
+    while(srow<=erow && scol <= ecol){
         // print first row
         for(int j = scol; j<= ecol; j++){ 
             cout<< mat[srow][j] << " ";

@@ -3,7 +3,7 @@
 using namespace std;
 
 void trap(int *heights, int n){
-    int leftMax[20000];
+    int leftMax[20000], rightMax[2000];
     leftMax[0] = heights[0]; 
     rightMax[0] = heights[n-1];
     for(int i = n-1; i >= 0; i--){

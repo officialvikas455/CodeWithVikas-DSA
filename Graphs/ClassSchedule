@@ -1,0 +1,44 @@
+class Solution {
+public:
+    bool isCycle(int src, vector<bool>& vis, vector<bool>& rec, vector<vector<int>>& graph) {
+        vis[src] = true;
+        rec[src] = true;
+
+        for (int neighbor : graph[src]) {
+            if (!vis[neighbor]) {
+                if (isCycle(neighbor, vis, rec, graph)) {
+                    return true;
+                }
+            } else if (rec[neighbor]) {
+                return true; // Back edge found
+            }
+        }
+
+        rec[src] = false;
+        return false;
+    }
+
+    bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
+        vector<vector<int>> graph(numCourses); // adjacency list
+
+        // Build the graph
+        for (auto& pre : prerequisites) {
+            int u = pre[1]; // prerequisite
+            int v = pre[0]; // course
+            graph[u].push_back(v);
+        }
+
+        vector<bool> vis(numCourses, false);
+        vector<bool> rec(numCourses, false);
+
+        for (int i = 0; i < numCourses; i++) {
+            if (!vis[i]) {
+                if (isCycle(i, vis, rec, graph)) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+};

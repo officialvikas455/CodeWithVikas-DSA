@@ -4,7 +4,7 @@ using namespace std;
 
 int getithBit(int num, int i){
     int bitmask = 1 << i;
-    if(num & bitmask==0){
+    if((num &bitmask)== 0){
         return 0;
     }
     else{

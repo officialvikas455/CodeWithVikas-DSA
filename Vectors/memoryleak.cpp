@@ -6,6 +6,7 @@ int  *func(){
     *ptr = 1200;
 
     cout<<"ptr points to:"<<*ptr<<endl;
+    return 0;
 }
 
 int main(){

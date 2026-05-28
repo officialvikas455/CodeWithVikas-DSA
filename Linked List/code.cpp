@@ -3,9 +3,9 @@ using namespace std;
 
 class Node {
     public:
-
     int data;
     Node* next;
+    
     Node(int val){
         data = val;
         next = NULL;
@@ -28,13 +28,13 @@ public:
 
     }
 
-   //~List(){
-      //  cout<< "List destructor";
-      //  if(head != NULL){
-       //     delete head;
-        //    head = NULL;
-      //  }
-   // }
+   ~List(){
+       cout<< "List destructor";
+       if(head != NULL){
+           delete head;
+           head = NULL;
+       }
+   }
     void push_front(int val){
         Node* newNode = new Node(val);// dynamic
 
@@ -81,6 +81,76 @@ public:
         newNode->next = temp->next;
         temp->next = newNode;
     }
+    Node* removeHead(Node* head){
+        if(head == NULL) return head;
+        Node* temp = head;
+        head = head->next;
+        delete temp;
+        return head;
+    }
+    // remove Node from end of the linkesd list
+    Node* removeTail(Node* head){
+        if(head == NULL || head->next == NULL) return NULL;
+        Node* temp = head;
+
+        while(temp->next->next != NULL) {
+            temp = temp->next;
+        }
+
+        delete temp->next;
+        temp->next = NULL;
+
+        return head;
+
+    }
+    Node* removeKth(Node* head, int k){
+        if(head == NULL) return head;
+        if(k==1){
+            Node* temp = head;
+            head = head->next;
+            delete temp;
+            return head;
+        }
+        int cnt= 0;
+        Node* temp = head;
+        Node* prev = NULL;
+
+        while(temp != NULL){
+            cnt++;
+            if(cnt == k){
+                prev->next = temp->next;
+                delete temp;
+                break;
+            }
+            prev = temp;
+            temp = temp->next;
+        }
+        return head;
+    }
+
+    Node* removeEle(Node* head, int el){
+        if(head == NULL) return head;
+        if(head->data == el){
+            Node* temp = head;
+            head = head->next;
+            delete temp;
+            return head;
+        }
+        Node* temp = head;
+        Node* prev = NULL;
+
+        while(temp != NULL){
+            if(temp->data == el){
+                prev->next = temp->next;
+                delete temp;
+                break;
+            }
+            prev = temp;
+            temp = temp->next;
+        }
+        return head;
+    }
+    
     void pop_front(){
         if(head == NULL){
             cout<< "LL is Empty\n";
@@ -90,6 +160,8 @@ public:
         temp-> next = NULL;
         delete temp;
     }
+
+    
     int searchItr(int key){
         Node* temp = head;
         int idx = 0;
@@ -232,8 +304,7 @@ int main() {
     
     cout << "Original list: ";
     ll.printList();
-    ll.head = ll.zigZagLL(ll.head);
     ll.printList();
-
+    ll.printList();
     return 0;
 }
